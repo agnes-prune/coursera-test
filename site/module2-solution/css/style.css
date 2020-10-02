@@ -1,0 +1,81 @@
+/** Basic style (Desktop) **/
+
+* {
+
+	box-sizing: border-box;
+	margin: 0;
+}
+
+body{
+    margin: 0 10px 0 10px;
+}
+
+content {
+	display: grid;
+	grid-gap: 10px;
+	grid-template-columns: 1fr;
+  	grid-template-rows: repeat(2, minmax(50px, auto));
+  	grid-template-areas: "header"
+                         "main"
+}
+
+header {
+	grid-area: header;
+	grid-column: span 3; 
+}
+
+h1 {
+	text-align: center;
+}
+
+main {
+	grid-area: main;
+ 	display: grid;
+  	grid-template-columns: 1fr 1fr 1fr;
+  	grid-auto-rows: minmax(100px, auto);
+  	grid-gap: 20px;
+}
+
+section {
+	display: flex;
+	flex-direction: column;
+	align-content: flex-start;
+	background: grey;
+}
+
+.label {
+	align-self: flex-end;
+	color: white;
+	padding: 5px;
+	border-radius: 3px;
+	background: pink;
+}
+
+section:nth-child(odd) .label{
+	background: green;
+}
+
+p {
+	padding: 5px;
+}
+
+
+
+/** Tablet layout**/
+@media screen and (min-width: 768px) and (max-width: 991px) {
+	main {
+  		grid-template-columns: 1fr 1fr;
+	}
+
+	/** le dernier enfant de main doit etre sur 2 columns **/
+	section:last-child {
+		grid-column: span 2; 
+	}
+}
+/** Mobile layout**/
+@media screen and (max-width: 767px) {
+		main {
+  		grid-template-columns: 1fr;
+	}
+
+}
